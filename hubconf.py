@@ -130,7 +130,7 @@ def _test(dataloader, model, loss_fn):
     correct /= size
     print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
-def train(train_dataloader, test_dataloader, model1, loss_fn1, optimizer1, epochs=5):
+def train(train_dataloader, test_dataloader, model1, loss_fn1, optimizer1, epochs):
     for t in range(epochs):
         print(f"Epoch {t+1}\n-------------------------------")
         _train(train_dataloader, model1, loss_fn1, optimizer1)
@@ -138,15 +138,26 @@ def train(train_dataloader, test_dataloader, model1, loss_fn1, optimizer1, epoch
     print("Done!")
     return model1
 
+def get_model_advanced(train_data_loader, n_epochs,lr=1e-4,config):
+  
+  return model
 
+def test_model(model1, test_data_loader):
 
-
-
-def sample_test(model1, test_data):
-    model1.eval()
+  accuracy_val, precision_val, recall_val, f1score_val = 0, 0, 0, 0
+  model1.eval()
+  
     x, y = test_data[0][0], test_data[0][1]
     with torch.no_grad():
         pred = model1(x)
         predicted, actual = classes[pred[0].argmax(0)], classes[y]
         print(f'Predicted: "{predicted}", Actual: "{actual}"')
+
+
+  
+  print ('Returning metrics... (rollnumber: xx)')
+  
+  return accuracy_val, precision_val, recall_val, f1score_val
+
+
 
