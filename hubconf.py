@@ -107,7 +107,7 @@ def create_dataloaders(training_data, test_data, batch_size=64):
 
 def get_model():
     
-    model = cs21m007nn().to(device)
+    model = cs21m007nn_simple().to(device)
 
     return model
 
