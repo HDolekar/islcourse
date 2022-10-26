@@ -76,21 +76,18 @@ def get_lossfn_and_optimizer(mymodel):
 
 def load_data():
 
-    # Download training data from open datasets.
-    # using cifar10 dataset...
-    training_data = datasets.mnist(
-        root="data",
-        train=True,
-        download=True,
-        transform=ToTensor(),
+    training_data = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=ToTensor()
     )
 
-    # Download test data from open datasets.
-    test_data = datasets.mnist(
-        root="data",
-        train=False,
-        download=True,
-        transform=ToTensor(),
+    test_data = datasets.FashionMNIST(
+    root="data",
+    train=False,
+    download=True,
+    transform=ToTensor()
     )
     
     return training_data, test_data
