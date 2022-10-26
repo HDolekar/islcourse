@@ -153,3 +153,12 @@ def sample_test(model1, test_data):
         predicted, actual = classes[pred[0].argmax(0)], classes[y]
         print(f'Predicted: "{predicted}", Actual: "{actual}"')
 
+        
+        
+def cross_entropy(y,y_predicted):
+  loss=-np.sum(y*np.log(y_predicted))
+  return loss/float(y_predicted.shape[0])
+
+
+def softmax(x):
+  return np.exp(x)/np.sum(np.exp(x),axis=0)
