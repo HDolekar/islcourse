@@ -59,13 +59,13 @@ class cs21m007nn_simple(nn.Module):
         super().__init__()
         self.A = nn.Flatten()
         self.B=nn.Linear(28*28,10)
-        self.C=softmax()
+        
         
 
     def forward(self, x):
         x = self.A(x)
         x=self.B(x)
-        x=self.C(x)
+        x=softmax(x)
         return x
     
     
