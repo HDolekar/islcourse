@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1ZLYjwYFgL9JsMCRrVHTtpHQ9yhc4HrQ_
 """
 
-
+# exercise 1 based on lsl lab on wed.. 26/oct/
 
 import torch
 from torch import nn
@@ -32,23 +32,28 @@ classes = [
 ]
 
 # Define model
+
 class cs21m007nn(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.flatten = nn.Flatten()
-        self.linear_relu_stack = nn.Sequential(
-            nn.Linear(32*32, 512),
+    def __init__(self,num_classes=10):
+        super(cs21m007nn, self).__init__()
+        self.layer1 = nn.Sequential(
+            nn.Conv2d(1, 16, kernel_size=5, padding=2),
+            nn.RelU()
+            nn.MaxPool2d(2))
+        self.layer2 = nn.Sequential(
+            nn.Conv2d(16, 32, kernel_size=5, padding=2),
             nn.ReLU(),
-            nn.Linear(512, 512),
-            nn.ReLU(),
-            nn.Linear(512, 10)
-        )
-
+            nn.MaxPool2d(2))
+        self.fc = nn.Linear(7*7*32, 10)
+        
     def forward(self, x):
-        x = self.flatten(x)
-        logits = self.linear_relu_stack(x)
-        return logits
-
+        out = self.layer1(x)
+        out = self.layer2(out)
+        out = self.fc(out)
+        return out
+    
+    
+    
 def get_lossfn_and_optimizer(mymodel):
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(mymodel.parameters(), lr=1e-3)
@@ -90,7 +95,7 @@ def create_dataloaders(training_data, test_data, batch_size=64):
 
 def get_model():
     
-    model = NeuralNetwork().to(device)
+    model = cs21m007nn().to(device)
 
     return model
 
