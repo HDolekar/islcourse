@@ -51,7 +51,22 @@ class cs21m007nn(nn.Module):
         out = self.layer2(out)
         out = self.fc(out)
         return out
+
     
+# Define model simle model 
+class cs21m007nn_simple(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.A = nn.Flatten()
+        self.B=nn.Linear(28*28,10)
+        self.C=softmax()
+        
+
+    def forward(self, x):
+        x = self.A(x)
+        x=self.B(x)
+        x=self.C(x)
+        return x
     
     
 def get_lossfn_and_optimizer(mymodel):
