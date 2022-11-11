@@ -67,10 +67,10 @@ class cs21m007(nn.Module):
         return x
 #---------------------------------------------------------------------------------------
 
-def get_lossfn_and_optimizer(mymodel):
-    loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(mymodel.parameters(), lr=1e-3)
-    return loss_fn, optimizer
+def get_lossfn_and_optimizer():
+    lossfn = loss_fn()
+    
+    return loss_fn
 
 # cross entropy 
 def loss_fn(y_pred,y_true):
