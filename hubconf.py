@@ -152,7 +152,7 @@ def train(trainloader,my_model,epochs,learning_rate=1e-3):
 
 
 
-def test(dataloader,model):
+def test(dataloader,model,loss_fn):
     size = len(dataloader.dataset)
     num_batches = len(dataloader)
     num_classes= len(dataloader.dataset.classes)
