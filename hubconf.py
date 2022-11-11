@@ -79,7 +79,7 @@ def loss_fn(y_pred,y_true):
     return v
 #-------------------------------------------------------------------------------
 def load_data():
-    train_data = datasets.FashionMNIST(
+    training_data = datasets.FashionMNIST(
                 root="data",
                 train = True,
                 download = True,
