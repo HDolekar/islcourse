@@ -68,9 +68,9 @@ class cs21m007(nn.Module):
 #---------------------------------------------------------------------------------------
 
 def get_lossfn_and_optimizer():
-    lossfn = loss_fn()
+    lossfn = loss_fn
     
-    return loss_fn
+    return lossfn
 
 # cross entropy 
 def loss_fn(y_pred,y_true):
