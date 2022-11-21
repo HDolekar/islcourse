@@ -76,6 +76,10 @@ def compare_clusterings(ypred_1=None,ypred_2=None):
   c=completeness_score(ypred_1,ypred_2)
   v=v_measure_score(ypred_1,ypred_2)
   
+  print(h)
+  print(c)
+  print(v)
+  
   return h,c,v
 
 ###### PART 2 ######
