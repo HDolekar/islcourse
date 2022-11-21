@@ -11,10 +11,10 @@ import torch.optim as optim
 ###### PART 1 ######
 
 def get_data_blobs(n_points=100):
-  pass
+  
   # write your code here
   # Refer to sklearn data sets
-  X, y = None
+  X, y = make_blobs(n_samples=n_points)
   # write your code ...
   return X,y
 
@@ -22,7 +22,7 @@ def get_data_circles(n_points=100):
   pass
   # write your code here
   # Refer to sklearn data sets
-  X, y = None
+  X, y = make_circles(n_samples=n_points)
   # write your code ...
   return X,y
 
