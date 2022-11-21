@@ -5,6 +5,7 @@ from sklearn.datasets import make_blobs
 from sklearn.datasets import make_circles
 from sklearn.datasets import load_digits
 from sklearn.cluster import KMeans
+from sklearn import metrics
 from sklearn.metrics import homogeneity_score,completeness_score,v_measure_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
