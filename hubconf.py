@@ -7,6 +7,13 @@ from sklearn.datasets import load_digits
 from sklearn.cluster import KMeans
 from sklearn.metrics import homogeneity_score,completeness_score,v_measure_score
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report,recall_score,roc_auc_score,precision_score,f1_score
+
+
+
 
 
 # You can import whatever standard packages are required
@@ -85,14 +92,29 @@ def build_rf_model(X, y):
   # write your code...
   # Build Random Forest classifier, refer to sklearn
   rf_model=RandomForestClassifier(max_depth=4, random_state=0)
-  rf_model.fit(X, y)
+  #rf_model.fit(X, y)
   
   return rf_model
 
-def get_metrics(model=None,X=None,y=None):
-  pass
+def get_metrics(model,X,y):
+  
   # Obtain accuracy, precision, recall, f1score, auc score - refer to sklearn metrics
-  acc, prec, rec, f1, auc = 0,0,0,0,0
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2,stratify=y)
+  model.fit(X_train,y_train)
+  
+  
+  y_pred_test = model.predict(X_test)
+  # View accuracy score
+  acc=accuracy_score(y_test, y_pred_test)
+  # print(acc)
+  rec=recall_score(y_test,y_pred_test)
+  #print(rec)
+  prec=precision_score(y_test,y_pred_test)
+  #print(prec)
+  f1=f1_score(y_test,y_pred_test)
+  
+  auc=roc_auc_score(y_test,y_pred_test)
+  #print(auc)
   # write your code here...
   return acc, prec, rec, f1, auc
 
