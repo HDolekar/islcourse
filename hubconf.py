@@ -19,7 +19,7 @@ def get_data_blobs(n_points=100):
   return X,y
 
 def get_data_circles(n_points=100):
-  pass
+  
   # write your code here
   # Refer to sklearn data sets
   X, y = make_circles(n_samples=n_points)
@@ -27,10 +27,14 @@ def get_data_circles(n_points=100):
   return X,y
 
 def get_data_mnist():
-  pass
+  
   # write your code here
   # Refer to sklearn data sets
-  X,y = None
+  
+  digits= load_digits()
+  X = digits.data
+  y = digits.target
+  
   # write your code ...
   return X,y
 
