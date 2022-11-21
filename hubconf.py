@@ -5,6 +5,7 @@ from sklearn.datasets import make_blobs
 from sklearn.datasets import make_circles
 from sklearn.datasets import load_digits
 from sklearn.cluster import KMeans
+from sklearn.metrics import homogeneity_score,completeness_score,v_measure_score
 
 
 
@@ -60,10 +61,13 @@ def assign_kmeans(km,X):
   ypred = km.predict(X)
   return ypred
 
-def compare_clusterings(ypred_1=None,ypred_2=None):
+def compare_clusterings(ypred_1=No,ypred_2=None):
   pass
   # refer to sklearn documentation for homogeneity, completeness and vscore
-  h,c,v = 0,0,0 # you need to write your code to find proper values
+  h=homogeneity_score(ypred_1,ypred_2)
+  c=completeness_score(ypred_1,ypred_2)
+  v=v_measure_score(ypred_1,ypred_2)
+  
   return h,c,v
 
 ###### PART 2 ######
