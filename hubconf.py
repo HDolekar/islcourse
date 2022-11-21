@@ -113,7 +113,7 @@ def get_metrics(model1,X,y):
   # View accuracy score
   acc=accuracy_score(y_test, y_pred_test)
   # print(acc)
-  rec=recall_score(y_test,y_pred_testaverage='macro')
+  rec=recall_score(y_test,y_pred_test,average='macro')
   #print(rec)
   prec=precision_score(y_test,y_pred_test,average='macro')
   #print(prec)
