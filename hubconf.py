@@ -1,6 +1,12 @@
 import torch
 from torch import nn
 import torch.optim as optim
+from sklearn.datasets import make_blobs
+from sklearn.datasets import make_circles
+from sklearn.datasets import load_digits
+from sklearn.cluster import KMeans
+
+
 
 # You can import whatever standard packages are required
 
@@ -39,11 +45,11 @@ def get_data_mnist():
   return X,y
 
 def build_kmeans(X=None,k=10):
-  pass
+  
   # k is a variable, calling function can give a different number
   # Refer to sklearn KMeans method
-  km = None # this is the KMeans object
-  # write your code ...
+  km = KMeans(n_clusters=k).fit(X)
+  
   return km
 
 def assign_kmeans(km=None,X=None):
