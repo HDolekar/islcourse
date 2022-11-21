@@ -160,6 +160,16 @@ def perform_gridsearch_cv_multimetric(model=None, param_grid=None, cv=5, X=None,
   
   top1_scores = []
   
+  
+  if X.ndim > 2:
+      n_samples = len(X)
+      X= X.reshape((n_samples, -1))
+      
+  for score in metrics:
+      grid_search_cv = GridSearchCV(model,param_grid,scoring = score,cv=cv)
+      grid_search_cv.fit(X,y)
+      top1_scores.append(grid_search_cv.best_estimator_.get_params())
+  
   return top1_scores
 
 ###### PART 3 ######
@@ -168,7 +178,7 @@ class MyNN(nn.Module):
   def __init__(self,inp_dim=64,hid_dim=13,num_classes=10):
     super(MyNN,self)
     
-    self.fc_encoder = None # write your code inp_dim to hid_dim mapper
+    self.fc_encoder = None # write your code inp_dim to
     self.fc_decoder = None # write your code hid_dim to inp_dim mapper
     self.fc_classifier = None # write your code to map hid_dim to num_classes
     
