@@ -6,7 +6,7 @@ from sklearn.datasets import make_circles
 from sklearn.datasets import load_digits
 from sklearn.cluster import KMeans
 from sklearn.metrics import homogeneity_score,completeness_score,v_measure_score
-
+from sklearn.linear_model import LogisticRegression
 
 
 # You can import whatever standard packages are required
@@ -72,9 +72,9 @@ def compare_clusterings(ypred_1=No,ypred_2=None):
 
 ###### PART 2 ######
 
-def build_lr_model(X=None, y=None):
-  pass
-  lr_model = None
+def build_lr_model(X, y):
+  
+  lr_model = LogisticRegression(random_state=0).fit(X, y)
   # write your code...
   # Build logistic regression, refer to sklearn
   return lr_model
