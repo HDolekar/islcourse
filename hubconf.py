@@ -52,12 +52,12 @@ def build_kmeans(X=None,k=10):
   
   return km
 
-def assign_kmeans(km=None,X=None):
-  pass
+def assign_kmeans(km,X):
+  
   # For each of the points in X, assign one of the means
   # refer to predict() function of the KMeans in sklearn
   # write your code ...
-  ypred = None
+  ypred = km.predict(X)
   return ypred
 
 def compare_clusterings(ypred_1=None,ypred_2=None):
