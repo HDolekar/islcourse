@@ -104,7 +104,7 @@ def build_rf_model(X, y):
 def get_metrics(model,X,y):
   
   # Obtain accuracy, precision, recall, f1score, auc score - refer to sklearn metrics
-  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2,stratify=y)
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42,stratify=y)
   model.fit(X_train,y_train)
   
   
