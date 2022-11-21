@@ -123,7 +123,11 @@ def get_paramgrid_lr():
   # you need to return parameter grid dictionary for use in grid search cv
   # penalty: l1 or l2
   
-  lr_param_grid =GridSearchCV(estimator=LogisticRegression(),param_grid={'C': [1,10], 'kernel': ('linear', 'rbf')})
+  parameters = [{'penalty':['l1','l2']}, 
+              {'C':[1, 10, 100, 1000]}]
+
+  lr_param_grid =GridSearchCV(estimator=LogisticRegression(),
+             param_grid=parameters)
   # refer to sklearn documentation on grid search and logistic regression
   # write your code here...
   return lr_param_grid
