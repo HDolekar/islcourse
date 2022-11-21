@@ -86,7 +86,7 @@ def compare_clusterings(ypred_1=None,ypred_2=None):
 
 def build_lr_model(X, y):
   
-  lr_model = LogisticRegression(random_state=0).fit(X, y)
+  lr_model = LogisticRegression().fit(X, y)
   # write your code...
   # Build logistic regression, refer to sklearn
   return lr_model
@@ -96,19 +96,20 @@ def build_rf_model(X, y):
   
   # write your code...
   # Build Random Forest classifier, refer to sklearn
-  rf_model=RandomForestClassifier(max_depth=4, random_state=0)
-  #rf_model.fit(X, y)
+  rf_model=RandomForestClassifier()
+  rf_model.fit(X, y)
   
   return rf_model
 
 def get_metrics(model,X,y):
   
-  # Obtain accuracy, precision, recall, f1score, auc score - refer to sklearn metrics
-  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42,stratify=y)
-  model.fit(X_train,y_train)
+  y_test=y
+  y_pred_test = model.predict(X)
   
   
-  y_pred_test = model.predict(X_test)
+  
+  
+  
   # View accuracy score
   acc=accuracy_score(y_test, y_pred_test)
   # print(acc)
