@@ -11,6 +11,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report,recall_score,roc_auc_score,precision_score,f1_score
+from sklearn.model_selection import GridSearchCV
 
 
 
@@ -121,7 +122,8 @@ def get_metrics(model,X,y):
 def get_paramgrid_lr():
   # you need to return parameter grid dictionary for use in grid search cv
   # penalty: l1 or l2
-  lr_param_grid = None
+  
+  lr_param_grid =GridSearchCV(estimator=LogisticRegression(),param_grid={'C': [1,10], 'kernel': ('linear', 'rbf')})
   # refer to sklearn documentation on grid search and logistic regression
   # write your code here...
   return lr_param_grid
