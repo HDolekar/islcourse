@@ -113,16 +113,20 @@ def get_metrics(model,X,y):
   # View accuracy score
   acc=accuracy_score(y_test, y_pred_test)
   # print(acc)
-  rec=recall_score(y_test,y_pred_test)
+  rec=recall_score(y_test,y_pred_testaverage='macro')
   #print(rec)
-  prec=precision_score(y_test,y_pred_test)
+  prec=precision_score(y_test,y_pred_test,average='macro')
   #print(prec)
-  f1=f1_score(y_test,y_pred_test)
+  f1=f1_score(y_test,y_pred_test,average='macro')
   
-  auc=roc_auc_score(y_test,y_pred_test)
+  auc=roc_auc_score(y_test,y_pred_test,multi_class='ovr')
   #print(auc)
   # write your code here...
+  
   return acc, prec, rec, f1, auc
+
+
+
 
 def get_paramgrid_lr():
   # you need to return parameter grid dictionary for use in grid search cv
@@ -181,17 +185,18 @@ def perform_gridsearch_cv_multimetric(model=None, param_grid=None, cv=5, X=None,
 
 # class MyNN(nn.Module):
 #   def __init__(self,inp_dim=64,hid_dim=13,num_classes=10):
-#     super(MyNN,self)
+#     super(MyNN,self).__init__()
     
-#     self.fc_encoder = None # write your code inp_dim to
-#     self.fc_decoder = None # write your code hid_dim to inp_dim mapper
-#     self.fc_classifier = None # write your code to map hid_dim to num_classes
+#     self.flat = nn.Flatten()
+#     self.fc_encoder = nn.Linear(inp_dim,hid_dim).to(device) # write your code inp_dim to hid_dim mapper
+#     self.fc_decoder = nn.Linear(hid_dim,inp_dim).to(device) # write your code hid_dim to inp_dim mapper
+#     self.fc_classifier = nn.Linear(hid_dim,num_classes).to(device) # write your code to map hid_dim to num_classes
     
-#     self.relu = None #write your code - relu object
-#     self.softmax = None #write your code - softmax object
+#     self.relu = nn.ReLU() #write your code - relu object
+#     self.softmax = nn.Softmax() #write your code - softmax object
     
-#   def forward(self,x):
-#     x = None # write your code - flatten x
+#  def forward(self,x):
+#     x = self.flat(x) # write your code - flatten x
 #     x_enc = self.fc_encoder(x)
 #     x_enc = self.relu(x_enc)
     
