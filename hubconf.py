@@ -69,7 +69,7 @@ def assign_kmeans(km,X):
   ypred = km.predict(X)
   return ypred
 
-def compare_clusterings(ypred_1=No,ypred_2=None):
+def compare_clusterings(ypred_1=None,ypred_2=None):
   
   # refer to sklearn documentation for homogeneity, completeness and vscore
   h=homogeneity_score(ypred_1,ypred_2)
