@@ -212,18 +212,28 @@ def get_metrics(model1,X,y):
 #     return y_pred, x_dec
   
 #   # This a multi component loss function - lc1 for class prediction loss and lc2 for auto-encoding loss
-#   def loss_fn(self,x,yground,y_pred,xencdec):
+# def loss_fn(self,x,yground,y_pred,xencdec):
     
 #     # class prediction loss
 #     # yground needs to be one hot encoded - write your code
-#     lc1 = None # write your code for cross entropy between yground and y_pred, advised to use torch.mean()
+#     # write your code for cross entropy between yground and y_pred, advised to use torch.mean()
+#     classes = set()
+#     for i in yground:
+#       classes.add(i)
+#     num_classes = len(classes)
+#     tmp = Fun.one_hot(yground, num_classes= num_classes).to(device)
     
+#     y_pred , tmp = y_pred.to(device) , tmp.to(device)
+#     v = -(tmp * torch.log(y_pred + 0.0001))
+#     lc1 = torch.mean(v)
+
+
 #     # auto encoding loss
 #     lc2 = torch.mean((x - xencdec)**2)
     
 #     lval = lc1 + lc2
     
-#     return lval
+#     return 
     
 # def get_mynn(inp_dim=64,hid_dim=13,num_classes=10):
 #   mynn = MyNN(inp_dim,hid_dim,num_classes)
