@@ -62,7 +62,7 @@ def assign_kmeans(km,X):
   return ypred
 
 def compare_clusterings(ypred_1=No,ypred_2=None):
-  pass
+  
   # refer to sklearn documentation for homogeneity, completeness and vscore
   h=homogeneity_score(ypred_1,ypred_2)
   c=completeness_score(ypred_1,ypred_2)
@@ -79,11 +79,14 @@ def build_lr_model(X, y):
   # Build logistic regression, refer to sklearn
   return lr_model
 
-def build_rf_model(X=None, y=None):
-  pass
-  rf_model = None
+def build_rf_model(X, y):
+  
+  
   # write your code...
   # Build Random Forest classifier, refer to sklearn
+  rf_model=RandomForestClassifier(max_depth=4, random_state=0)
+  rf_model.fit(X, y)
+  
   return rf_model
 
 def get_metrics(model=None,X=None,y=None):
