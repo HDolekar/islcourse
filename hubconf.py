@@ -199,7 +199,7 @@ class MyNN(nn.Module):
     self.relu = nn.ReLU() #write your code - relu object
     self.softmax = nn.Softmax() #write your code - softmax object
     
- def forward(self,x):
+  def forward(self,x):
     x = self.flat(x) # write your code - flatten x
     x_enc = self.fc_encoder(x)
     x_enc = self.relu(x_enc)
